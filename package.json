@@ -9,7 +9,8 @@
     "Jorge Izquierdo <jorge@aragon.one>"
   ],
   "files": [
-    "/artifacts"
+    "/artifacts",
+    "/contracts"
   ],
   "license": "MIT",
   "private": false,
