@@ -9,10 +9,15 @@ import "./IERC3000Executor.sol";
 library ERC3000Data {
     // TODO: come up with a non-shitty name
     struct Container {
+        Payload payload;
+        Config config;
+    }
+
+    struct Payload {
         uint256 nonce;
+        address submitter;
         IERC3000Executor executor;
         Action[] actions;
-        Config config;
     }
 
     struct Action {
