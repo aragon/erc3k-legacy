@@ -1,6 +1,6 @@
-const { expect } = require("chai");
+const { expect } = require('chai')
 
-describe("ERC3000", function() {
+describe('ERC3000', function() {
   let erc3k
 
   beforeEach(async () => {
