@@ -1,10 +1,17 @@
 {
   "name": "erc3k",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.10",
   "description": "ERC-3000 smart contract interfaces",
   "main": "index.js",
   "repository": "https://github.com/aragon/erc3k",
-  "author": "Aragon Association",
+  "author": "Aragon Association <legal@aragon.org>",
+  "contributors": [
+    "Jorge Izquierdo <jorge@aragon.one>"
+  ],
+  "files": [
+    "/artifacts",
+    "/contracts"
+  ],
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -16,7 +23,9 @@
     "ethers": "^5.0.0"
   },
   "scripts": {
-    "compile": "npx buidler compile",
-    "test": "npx buidler test"
+    "clean": "rm -rf artifacts",
+    "compile": "npx buidler compile --force",
+    "test": "npx buidler test",
+    "prepublishOnly": "yarn test && yarn clean && yarn compile"
   }
 }
