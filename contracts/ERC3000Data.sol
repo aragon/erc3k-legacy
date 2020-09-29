@@ -4,7 +4,7 @@
 
 pragma solidity ^0.6.8;
 
-abstract contract ERC3000Data {
+library ERC3000Data {
     struct Action {
         address to;
         uint256 value;
