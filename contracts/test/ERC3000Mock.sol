@@ -12,7 +12,7 @@ contract ERC3000Mock is ERC3000 {
 
     function execute(ERC3000Data.Container memory) override public returns (bytes[] memory) { }
 
-    function challenge(bytes32, ERC3000Data.Config memory, bytes memory) override public { }
+    function challenge(ERC3000Data.Container memory, bytes memory) override public returns (uint256 resolverId) { }
 
     function resolve(ERC3000Data.Container memory, uint256) override public returns (bytes[] memory) { }
 

@@ -15,7 +15,7 @@ abstract contract IERC3000 {
     function execute(ERC3000Data.Container memory container) virtual public returns (bytes[] memory execResults);
     event Executed(bytes32 indexed containerHash, address indexed actor, bytes[] execResults);
 
-    function challenge(bytes32 payloadHash, ERC3000Data.Config memory config, bytes memory reason) virtual public;
+    function challenge(ERC3000Data.Container memory container, bytes memory reason) virtual public returns (uint256 resolverId);
     event Challenged(bytes32 indexed containerHash, address indexed actor, bytes reason, uint256 resolverId, ERC3000Data.Collateral collateral);
 
     function resolve(ERC3000Data.Container memory container, uint256 resolverId) virtual public returns (bytes[] memory execResults);
