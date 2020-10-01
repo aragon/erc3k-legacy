@@ -16,6 +16,7 @@ library ERC3000Data {
 
     struct Payload {
         uint256 nonce;
+        uint256 executionTime;
         address submitter;
         IERC3000Executor executor;
         Action[] actions;

@@ -14,6 +14,7 @@ abstract contract ERC3000 is IERC3000, ERC165 {
         this.schedule.selector
         ^ this.execute.selector
         ^ this.challenge.selector
+        ^ this.resolve.selector
         ^ this.veto.selector
         ^ this.configure.selector
     ;
