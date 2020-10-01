@@ -8,7 +8,7 @@ pragma experimental ABIEncoderV2;
 import "../ERC3000.sol";
 
 contract ERC3000Mock is ERC3000 {
-    function schedule(ERC3000Data.Container memory, bytes memory) override public returns (bytes32) { }
+    function schedule(ERC3000Data.Container memory) override public returns (bytes32) { }
 
     function execute(ERC3000Data.Container memory) override public returns (bytes[] memory) { }
 

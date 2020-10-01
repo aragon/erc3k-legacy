@@ -3,6 +3,7 @@
  */
 
 pragma solidity ^0.6.8;
+pragma experimental ABIEncoderV2;
 
 import "./IERC3000Executor.sol";
 
@@ -18,6 +19,7 @@ library ERC3000Data {
         address submitter;
         IERC3000Executor executor;
         Action[] actions;
+        bytes proof;
     }
 
     struct Action {
@@ -31,11 +33,36 @@ library ERC3000Data {
         Collateral scheduleDeposit;
         Collateral challengeDeposit;
         Collateral vetoDeposit;
+        address resolver;
         bytes rules;
     }
 
     struct Collateral {
         address token;
         uint256 amount;
+    }
+
+    function containerHash(bytes32 payloadHash, bytes32 configHash) internal view returns (bytes32) {
+        return keccak256(abi.encodePacked("erc3k-v1", this, payloadHash, configHash));
+    }
+
+    function hash(Container memory container) internal view returns (bytes32) {
+        return containerHash(hash(container.payload), hash(container.config));
+    }
+
+    function hash(Payload memory payload) internal pure returns (bytes32) {
+        return keccak256(
+            abi.encodePacked(
+                payload.nonce,
+                payload.submitter,
+                payload.executor,
+                keccak256(abi.encode(payload.actions)),
+                keccak256(payload.proof)
+            )
+        );
+    }
+
+    function hash(Config memory config) internal pure returns (bytes32) {
+        return keccak256(abi.encode(config));
     }
 }

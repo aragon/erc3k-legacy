@@ -9,8 +9,8 @@ import "./ERC3000Data.sol";
 import "./IERC3000Executor.sol";
 
 abstract contract IERC3000 {
-    function schedule(ERC3000Data.Container memory container, bytes memory proof) virtual public returns (bytes32 actionHash);
-    event Scheduled(bytes32 indexed containerHash, ERC3000Data.Payload payload, bytes proof, uint256 executionTime, ERC3000Data.Collateral collateral);
+    function schedule(ERC3000Data.Container memory container) virtual public returns (bytes32 actionHash);
+    event Scheduled(bytes32 indexed containerHash, ERC3000Data.Payload payload, uint256 executionTime, ERC3000Data.Collateral collateral);
 
     function execute(ERC3000Data.Container memory container) virtual public returns (bytes[] memory execResults);
     event Executed(bytes32 indexed containerHash, address indexed actor, bytes[] execResults);
