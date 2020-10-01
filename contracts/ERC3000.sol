@@ -14,10 +14,12 @@ abstract contract ERC3000 is IERC3000, ERC165 {
         this.schedule.selector
         ^ this.execute.selector
         ^ this.challenge.selector
+        ^ this.resolve.selector
         ^ this.veto.selector
+        ^ this.configure.selector
     ;
 
-    function supportsInterface(bytes4 _interfaceId) override public pure returns (bool) {
+    function supportsInterface(bytes4 _interfaceId) virtual override public pure returns (bool) {
         return _interfaceId == ERC3000_INTERFACE_ID || super.supportsInterface(_interfaceId);
     }
 }
